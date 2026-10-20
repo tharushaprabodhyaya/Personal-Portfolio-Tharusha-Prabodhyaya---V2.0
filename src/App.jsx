@@ -1,12 +1,6 @@
-import { useState } from 'react';
-
-const categories = ['All', 'Software & Web', 'UI/UX & Mobile', 'Graphics & Illustrations'];
-
-const projects = [
-  { title: 'Malcolm Lismore Photography Website', category: 'Software & Web', description: 'Technologies: HTML, CSS, JS', image: '/images/Project01.png', link: 'https://malcolmlismorephotography.netlify.app/home' },
-  { title: 'E-space Solutions DBMS', category: 'Software & Web', description: 'Technologies: C#, SQL Sever, Guna, Krypton', image: '/images/Project02.jpg', link: 'https://github.com/tharushaprabodhyaya/Malcolm_Lismore_Photography_Website' },
-  { title: 'Fresh Grocers Grocery Ordering Website UI Designs', category: 'UI/UX & Mobile', description: 'Technologies & Tools: Figma, Mockups', image: '/images/Project03.png', link: 'https://www.behance.net/gallery/236176743/Fresh-Grocers-Grocery-Ordering-Website-UI-Designs' },
-];
+import Education from './components/Education.jsx';
+import Projects from './components/Projects.jsx';
+import Skills from './components/Skills.jsx';
 
 const certifications = [
   { issuer: 'University of Moratuwa', title: 'Web Design for Beginners', image: '/images/uomLogo.png', link: 'https://open.uom.lk/verify' },
@@ -16,12 +10,7 @@ const certifications = [
   { issuer: 'SoloLearn', title: 'Introduction to SQL', image: '/images/sololearnLogo.jpg', link: 'https://www.sololearn.com/en/certificates/CC-0S9FMWOJ' },
 ];
 
-const skills = ['HTML.png', 'CSS.png', 'JS.png', 'Java.jpg', 'Python.png', 'CSharp.webp', 'NET.png', 'PHP.png', 'SQL.webp', 'MongoDB.png', 'Figma.png', 'Photoshop.jpg'];
-
 function App() {
-  const [activeCategory, setActiveCategory] = useState('All');
-  const visibleProjects = activeCategory === 'All' ? projects : projects.filter((project) => project.category === activeCategory);
-
   return (
     <>
       <nav className="navbar">
@@ -42,13 +31,13 @@ function App() {
         <div className="hero-image"><img src="/images/ProfilePic.png" alt="Profile Image" /></div>
       </section>
 
-      <section id="education" className="section"><h2>Educations</h2><div className="table-wrap"><table className="content-table"><thead><tr><th>Qualification</th><th>Institute</th><th>Year</th></tr></thead><tbody><tr><td>Pearson HND in Computing (Software Engineering)</td><td>ESOFT Metro Campus (Pearson Assured)</td><td>FEB 2024 - SEP 2025</td></tr><tr><td>Pearson Level 3 Diploma in Information Technology</td><td>ESOFT Metro Campus (Pearson Assured)</td><td>JUL 2023 - APR 2024</td></tr><tr><td>Pearson Level 3 Diploma in English</td><td>ESOFT Metro Campus (Pearson Assured)</td><td>JUL 2023 - APR 2024</td></tr><tr><td>GCE Ordinary Level (O/L)</td><td>MR/ Siddratha College Weligama</td><td>JAN 2020 - MAY 2023</td></tr></tbody></table></div></section>
+      <Education />
 
       <section id="certifications" className="section"><h2>Certifications</h2><div className="container"><div className="card-container">{certifications.map((certificate) => <article className="card-article" key={certificate.title}><img src={certificate.image} alt={certificate.issuer} className="card-img" /><div className="card-data"><span className="card-description">{certificate.issuer}</span><h3>{certificate.title}</h3><a href={certificate.link} target="_blank" rel="noreferrer" className="card-button">View Certificate</a></div></article>)}</div></div></section>
 
-      <section id="projects" className="section"><h2>Projects</h2><div className="project-filters" role="tablist" aria-label="Project categories">{categories.map((category) => <button key={category} className={activeCategory === category ? 'filter active' : 'filter'} onClick={() => setActiveCategory(category)} role="tab" aria-selected={activeCategory === category}>{category}</button>)}</div><div className="container"><div className="card-container project-cards">{visibleProjects.map((project) => <article className="card-article" key={project.title}><img src={project.image} alt={project.title} className="project-img" /><div className="card-data"><span className="card-description">{project.description}</span><h3>{project.title}</h3><a href={project.link} target="_blank" rel="noreferrer" className="card-button">View Project</a></div></article>)}</div></div>{visibleProjects.length === 0 && <p className="empty-state">Projects in this category are coming soon.</p>}</section>
+      <Projects />
 
-      <section id="skills" className="section"><h2>Skills</h2><div className="container"><div className="skills-grid">{skills.map((skill) => <div className="skill-card" key={skill}><img src={`/images/${skill}`} alt={skill.split('.')[0]} /></div>)}</div></div></section>
+      <Skills />
 
       <section id="contact" className="section contact"><h2>Contact Me</h2><form name="contact" method="post" data-netlify="true"><input type="hidden" name="form-name" value="contact" /><p><label>Name<input type="text" name="name" required /></label></p><p><label>Email<input type="email" name="email" required /></label></p><p><label>Message<textarea name="message" required /></label></p><p><button type="submit">Send</button></p></form><div className="links"><a href="https://github.com/tharushaprabodhyaya" target="_blank" rel="noreferrer">GitHub</a><a href="https://www.linkedin.com/in/tharushaprabodhyaya/" target="_blank" rel="noreferrer">LinkedIn</a><a href="mailto:tharushaprabodhyaya@gmail.com">Email</a><a href="#home">Portfolio</a><a href="https://www.behance.net/tharushaprabodhyaya" target="_blank" rel="noreferrer">Behance</a></div></section>
       <footer><p>© 2026 Tharusha Prabodhyaya. All rights reserved.<br />✨ v1.2.0</p></footer>
