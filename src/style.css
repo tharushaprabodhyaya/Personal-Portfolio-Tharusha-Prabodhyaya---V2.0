@@ -161,38 +161,83 @@ a {
     font-size: 30px;
 }
 
-.table-wrap {
-    overflow-x: auto;
+.section-heading {
+    text-align: center;
+    margin-bottom: 40px;
 }
 
-.content-table {
-    border-collapse: collapse;
-    margin: 25px auto;
-    width: min(100%, 1000px);
-    font-size: 1em;
-    background: rgba(255, 255, 255, .33);
+.section-heading h2 {
+    margin-bottom: 0;
+}
+
+.section-eyebrow {
+    display: block;
+    color: var(--cyan);
+    font-size: .8rem;
+    font-weight: bold;
+    letter-spacing: .18em;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.education-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+    margin: 0 auto;
+    max-width: 1000px;
+}
+
+.education-card {
+    display: flex;
+    gap: 20px;
+    padding: 26px;
+    background: rgba(35, 50, 84, .72);
+    border: 1px solid rgba(56, 189, 248, .25);
+    border-radius: 18px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, .15);
     backdrop-filter: blur(8px);
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 0 20px rgba(0, 0, 0, .15);
+    transition: border-color .3s ease, transform .3s ease, box-shadow .3s ease;
 }
 
-.content-table thead tr {
-    background: var(--cyan);
-    color: #000;
-    text-align: left;
+.education-card:hover {
+    border-color: var(--cyan);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, .25);
+    transform: translateY(-5px);
+}
+
+.education-number {
+    display: grid;
+    place-items: center;
+    flex: 0 0 48px;
+    height: 48px;
+    border: 1px solid var(--cyan);
+    border-radius: 50%;
+    color: var(--cyan);
+    font-size: .85rem;
     font-weight: bold;
 }
 
-.content-table th,
-.content-table td {
-    padding: 12px 15px;
-    border: 1px solid rgba(255, 255, 255, .25);
+.education-card-content {
+    min-width: 0;
 }
 
-.content-table tbody tr:nth-of-type(even) {
-    background: #f3f3f3;
-    color: #111;
+.education-year {
+    color: var(--cyan);
+    font-size: .78rem;
+    font-weight: bold;
+    letter-spacing: .08em;
+}
+
+.education-card h3 {
+    margin: 9px 0 10px;
+    font-size: 1.1rem;
+    line-height: 1.35;
+}
+
+.education-card p {
+    color: #dbeafe;
+    font-size: .95rem;
 }
 
 .container {
@@ -517,6 +562,14 @@ footer {
     .card-container,
     .skills-grid {
         grid-template-columns: 1fr;
+    }
+
+    .education-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .education-card {
+        padding: 22px;
     }
 
     .project-filters {
